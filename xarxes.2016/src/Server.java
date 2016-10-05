@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class Server {
     private final HashMap<String, PrintWriter> clients = new HashMap<>();
 
-    public void run() {
+    public static void main(String[] args) {
         System.out.println("Servidor iniciat");
         try (ServerSocket serverSocket = new ServerSocket(8981)) {
             while (true) {
