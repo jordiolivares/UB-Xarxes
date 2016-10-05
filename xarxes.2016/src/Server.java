@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Created by Jordi Olivares Provencio on 5/10/16.
  */
 public class Server {
-    private final HashMap<String, PrintWriter> clients = new HashMap<>();
+    private static final HashMap<String, PrintWriter> clients = new HashMap<>();
 
     public static void main(String[] args) {
         System.out.println("Servidor iniciat");
@@ -24,7 +24,7 @@ public class Server {
         }
     }
 
-    private class ServerManager extends Thread {
+    private static class ServerManager extends Thread {
         private Socket socket;
         private String username;
 
