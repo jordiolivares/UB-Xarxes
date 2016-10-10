@@ -24,6 +24,7 @@ public class Main {
             System.out.println("introdueix el port");
             //int port = entradaDades.nextInt();
             int port = 8189;
+            //obrim un nou socket
             Socket socket = new Socket(IP_Address, port);
                 try {
                     InputStream entrada = socket.getInputStream();
