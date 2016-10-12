@@ -14,6 +14,7 @@ public class Server {
 
     public static void main(String[] args) {
         System.out.println("Servidor iniciat");
+        // try-with-resources, tanca al final del try els recursos inicialitzats
         try (ServerSocket serverSocket = new ServerSocket(8981)) {
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -38,14 +39,17 @@ public class Server {
                     BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
             ) {
+                // Demanem l'usuari
                 while (true) {
                     out.println("Escolleix l'usuari: ");
                     username = in.readLine();
+                    // Utilitzem *synchronized* per tal d'evitar problemes de multithread
                     synchronized (clients) {
                         if (!clients.containsKey(username)) {
                             clients.put(username, out);
                             out.println("Benvingut al xat :)");
                             break;
+                        // Cas que s'hagi desconnectat
                         } else if (username == null) {
                             return;
                         } else {
