@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.util.HashMap;
 
 /**
- * Created by Jordi Olivares Provencio on 5/10/16.
+ * Created by Jordi Olivares and Alberto Leiva on 5/10/16.
  */
 public class Server {
     private static final HashMap<String, PrintWriter> clients = new HashMap<>();
@@ -15,7 +15,7 @@ public class Server {
     public static void main(String[] args) {
         System.out.println("Servidor iniciat");
         // try-with-resources, tanca al final del try els recursos inicialitzats
-        try (ServerSocket serverSocket = new ServerSocket(8981)) {
+        try (ServerSocket serverSocket = new ServerSocket(8189)) {
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("Usuari connectat");
